@@ -11,16 +11,16 @@ window.addEventListener('resize', () => {
 });
 
 const particles = [];
-const PARTICLE_COUNT = 80;
+const PARTICLE_COUNT = 45;
 
 for (let i = 0; i < PARTICLE_COUNT; i++) {
     particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        size: Math.random() * 1.5 + 0.5,
-        alpha: Math.random() * 0.6 + 0.2,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        size: Math.random() * 1.2 + 0.3,
+        alpha: Math.random() * 0.35 + 0.1,
     });
 }
 
@@ -53,7 +53,7 @@ function drawParticles() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 255, 200, ${p.alpha})`;
+        ctx.fillStyle = `rgba(200, 169, 106, ${p.alpha})`;
         ctx.fill();
     });
 
@@ -66,9 +66,9 @@ drawParticles();
 const navbar = document.querySelector('.navbar');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(5, 5, 15, 0.97)';
+        navbar.style.background = 'rgba(11, 15, 26, 0.98)';
     } else {
-        navbar.style.background = 'rgba(5, 5, 15, 0.85)';
+        navbar.style.background = 'rgba(11, 15, 26, 0.9)';
     }
 });
 
@@ -83,9 +83,9 @@ navToggle.addEventListener('click', () => {
     navLinks.style.position = 'absolute';
     navLinks.style.top = '60px';
     navLinks.style.right = '1.5rem';
-    navLinks.style.background = 'rgba(5, 5, 15, 0.97)';
+    navLinks.style.background = 'rgba(11, 15, 26, 0.98)';
     navLinks.style.padding = '1rem 2rem';
-    navLinks.style.border = '1px solid rgba(0, 255, 200, 0.15)';
+    navLinks.style.border = '1px solid rgba(200, 169, 106, 0.18)';
     navLinks.style.borderRadius = '8px';
     navLinks.style.gap = '1rem';
 });
