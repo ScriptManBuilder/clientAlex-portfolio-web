@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корінчук Олександр — Науковий співробітник, Реставратор, Херсон</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Корінчук Олександр Олександрович — старший науковий співробітник Херсонського обласного краєзнавчого музею. Історик, архівіст, документознавець, реставратор металів.">
+    <meta name="keywords" content="Корінчук Олександр, науковий співробітник, Херсонський музей, реставратор металів, архівіст, документознавець, Херсон, краєзнавство, археологія">
+    <meta name="author" content="Корінчук Олександр Олександрович">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#00ffc8">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Корінчук Олександр — Науковий співробітник">
+    <meta property="og:description" content="Старший науковий співробітник Херсонського обласного краєзнавчого музею. Реставрація металів, архівна справа, історія краю.">
+    <meta property="og:image" content="assets/images/avatar.jpg">
+    <meta property="og:locale" content="uk_UA">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Фоновий canvas для частинок -->
+    <canvas id="canvas"></canvas>
+
+    <!-- Навігація -->
+    <nav class="navbar">
+        <div class="nav-logo">KOR<span class="accent">.</span>ALX</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Головна</a></li>
+            <li><a href="#about">Про мене</a></li>
+            <li><a href="#education">Освіта</a></li>
+            <li><a href="#experience">Досвід</a></li>
+            <li><a href="#skills">Навички</a></li>
+            <li><a href="#contact">Контакти</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- HERO секція -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-avatar-wrapper">
+                <div class="avatar-ring"></div>
+                <img src="assets/images/avatar.jpg" alt="Корінчук Олександр" class="hero-avatar">
+            </div>
+            <div class="hero-text">
+                <p class="hero-label">// науковий співробітник</p>
+                <h1 class="hero-name">Корінчук<br><span class="accent">Олександр</span></h1>
+                <p class="hero-title">Старший науковий співробітник<br>Херсонського обласного краєзнавчого музею</p>
+                <div class="hero-tags">
+                    <span class="tag">Історик</span>
+                    <span class="tag">Архівіст</span>
+                    <span class="tag">Реставратор</span>
+                    <span class="tag">Документознавець</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn-primary">Дізнатись більше</a>
+                    <a href="#contact" class="btn-outline">Зв'язатись</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ПРО МЕНЕ -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">// Про_мене</h2>
+            <div class="about-grid">
+                <div class="glass-card about-card">
+                    <p>Народився <span class="accent">24 червня 2002 року</span> в місті Херсон.</p>
+                    <p>У <span class="accent">2019 році</span> закінчив Херсонську спеціалізовану школу І–ІІІ ступенів № 31 з поглибленим вивченням історії, права та іноземних мов.</p>
+                    <p>У <span class="accent">2023 році</span> здобув вищу освіту ступеня бакалавра у Херсонському державному університеті за спеціальністю «Історія та археологія», отримавши кваліфікацію <em>історик, архівіст, документознавець</em>.</p>
+                    <p>У <span class="accent">2024 році</span> завершив навчання в Миколаївському національному університеті імені В. О. Сухомлинського, здобувши ступінь <span class="accent">магістра</span> за спеціальністю «Історія та археологія».</p>
+                    <p>У <span class="accent">серпні 2024 року</span> пройшов стажування у Національному науково-дослідному реставраційному центрі України, де оволодів практичними навичками реставрації та консервації виробів з металу та мідних сплавів.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="glass-card stat-card">
+                        <div class="stat-number accent">2+</div>
+                        <div class="stat-label">Роки<br>досвіду</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-number accent">2</div>
+                        <div class="stat-label">Вищі<br>освіти</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-number accent">🏛</div>
+                        <div class="stat-label">Музей<br>Херсон</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-number accent">⚗</div>
+                        <div class="stat-label">Реставрація<br>металів</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОСВІТА -->
+    <section id="education" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">// Освіта</h2>
+            <div class="timeline">
+                <div class="timeline-item glass-card">
+                    <div class="timeline-year accent">2024</div>
+                    <div class="timeline-content">
+                        <h3>Магістр</h3>
+                        <p class="timeline-place">Миколаївський національний університет імені В. О. Сухомлинського</p>
+                        <p class="timeline-spec">Спеціальність: Історія та археологія</p>
+                    </div>
+                </div>
+                <div class="timeline-item glass-card">
+                    <div class="timeline-year accent">2023</div>
+                    <div class="timeline-content">
+                        <h3>Бакалавр</h3>
+                        <p class="timeline-place">Херсонський державний університет</p>
+                        <p class="timeline-spec">Спеціальність: Історик, архівіст, документознавець</p>
+                    </div>
+                </div>
+                <div class="timeline-item glass-card">
+                    <div class="timeline-year accent">2024</div>
+                    <div class="timeline-content">
+                        <h3>Стажування</h3>
+                        <p class="timeline-place">Національний науково-дослідний реставраційний центр України</p>
+                        <p class="timeline-spec">Реставрація та консервація металів і мідних сплавів<br>Керівник: В. М. Голуб</p>
+                    </div>
+                </div>
+                <div class="timeline-item glass-card">
+                    <div class="timeline-year accent">2019</div>
+                    <div class="timeline-content">
+                        <h3>Середня освіта</h3>
+                        <p class="timeline-place">Херсонська спеціалізована школа № 31</p>
+                        <p class="timeline-spec">Поглиблене вивчення історії, права та іноземних мов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ДОСВІД -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">// Кар'єра</h2>
+            <div class="experience-list">
+                <div class="glass-card exp-card active-card">
+                    <div class="exp-period accent">Вересень 2025 — сьогодні</div>
+                    <h3 class="exp-title">Старший науковий співробітник</h3>
+                    <p class="exp-place">Херсонський обласний краєзнавчий музей<br>Науково-експозиційний відділ історії краю</p>
+                    <span class="badge">Поточна посада</span>
+                </div>
+                <div class="glass-card exp-card">
+                    <div class="exp-period accent">Червень 2024 — вересень 2025</div>
+                    <h3 class="exp-title">Науковий співробітник</h3>
+                    <p class="exp-place">Херсонський обласний краєзнавчий музей</p>
+                </div>
+                <div class="glass-card exp-card">
+                    <div class="exp-period accent">Лютий 2023 — червень 2024</div>
+                    <h3 class="exp-title">Молодший науковий співробітник</h3>
+                    <p class="exp-place">Херсонський обласний краєзнавчий музей</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- НАВИЧКИ -->
+    <section id="skills" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">// Навички</h2>
+            <div class="skills-grid">
+                <div class="glass-card skill-card">
+                    <div class="skill-icon">🏺</div>
+                    <h3>Реставрація металів</h3>
+                    <p>Консервація та реставрація виробів з металу і мідних сплавів</p>
+                </div>
+                <div class="glass-card skill-card">
+                    <div class="skill-icon">📜</div>
+                    <h3>Архівна справа</h3>
+                    <p>Документознавство, архівістика, систематизація архівних фондів</p>
+                </div>
+                <div class="glass-card skill-card">
+                    <div class="skill-icon">🔍</div>
+                    <h3>Наукові дослідження</h3>
+                    <p>Аналіз, систематизація та публікація наукових матеріалів з історії краю</p>
+                </div>
+                <div class="glass-card skill-card">
+                    <div class="skill-icon">🏛</div>
+                    <h3>Музейна справа</h3>
+                    <p>Робота з музейними фондами, організація науково-дослідної роботи</p>
+                </div>
+                <div class="glass-card skill-card">
+                    <div class="skill-icon">⚔</div>
+                    <h3>Археологія</h3>
+                    <p>Спеціалізація з археології та вивчення стародавніх артефактів</p>
+                </div>
+                <div class="glass-card skill-card">
+                    <div class="skill-icon">📖</div>
+                    <h3>Історія краю</h3>
+                    <p>Глибоке вивчення регіональної та загальної історії України</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТИ -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">// Контакти</h2>
+            <div class="contact-wrapper">
+                <div class="glass-card contact-card">
+                    <div class="contact-item">
+                        <span class="contact-label">Телефон</span>
+                        <a href="tel:+380689257092" class="contact-value accent">+38 068 925 70 92</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Telegram</span>
+                        <a href="https://t.me/Adonitoram" target="_blank" class="contact-value accent">@Adonitoram</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Посада</span>
+                        <span class="contact-value">Старший науковий співробітник</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Організація</span>
+                        <span class="contact-value">Херсонський обласний краєзнавчий музей</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Telegram кнопка (фіксована) -->
+    <a href="https://t.me/Adonitoram" target="_blank" class="telegram-btn" title="Написати в Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/>
+        </svg>
+    </a>
+
+    <footer class="footer">
+        <p>© 2026 Корінчук Олександр Олександрович</p>
+        <p class="footer-sub">Херсонський обласний краєзнавчий музей</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

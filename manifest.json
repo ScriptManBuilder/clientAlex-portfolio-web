@@ -1,0 +1,16 @@
+{
+    "name": "Корінчук Олександр — Портфоліо",
+    "short_name": "KOA Portfolio",
+    "description": "Портфоліо старшого наукового співробітника Херсонського обласного краєзнавчого музею",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#05050f",
+    "theme_color": "#00ffc8",
+    "icons": [
+        {
+            "src": "assets/logos/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}
