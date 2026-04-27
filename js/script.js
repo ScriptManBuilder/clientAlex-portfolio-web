@@ -337,11 +337,18 @@ const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const lightboxCaption = document.getElementById('lightbox-caption');
 
-function openLightbox(src, caption) {
-    lightboxImg.src = src;
-    lightboxCaption.textContent = caption;
+let lightboxItems = [];
+let lightboxIndex = 0;
+
+function openLightbox(index) {
+    lightboxIndex = index;
+    const item = lightboxItems[index];
+    lightboxImg.src = item.src;
+    lightboxImg.alt = item.alt;
+    lightboxCaption.textContent = item.alt;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
+    updateArrows();
 }
 
 function closeLightbox() {
@@ -350,16 +357,36 @@ function closeLightbox() {
     document.body.style.overflow = '';
 }
 
-document.querySelectorAll('.artifact-photo, .restoration-photo').forEach(img => {
-    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+function showPrev() {
+    if (lightboxIndex > 0) openLightbox(lightboxIndex - 1);
+}
+
+function showNext() {
+    if (lightboxIndex < lightboxItems.length - 1) openLightbox(lightboxIndex + 1);
+}
+
+function updateArrows() {
+    document.querySelector('.lightbox-prev').style.opacity = lightboxIndex === 0 ? '0.25' : '1';
+    document.querySelector('.lightbox-next').style.opacity = lightboxIndex === lightboxItems.length - 1 ? '0.25' : '1';
+}
+
+lightboxItems = Array.from(document.querySelectorAll('.artifact-photo, .restoration-photo, .gallery-photo'));
+
+lightboxItems.forEach((img, index) => {
+    img.addEventListener('click', () => openLightbox(index));
 });
 
 document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+document.querySelector('.lightbox-prev').addEventListener('click', showPrev);
+document.querySelector('.lightbox-next').addEventListener('click', showNext);
 
 lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
 });
 
 document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') showNext();
 });

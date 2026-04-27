@@ -340,6 +340,13 @@ body::after {
     padding: 6rem 0;
     position: relative;
     z-index: 1;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
+}
+
+/* Hero is above-fold — no content-visibility */
+.hero-section {
+    content-visibility: visible;
 }
 
 .section-alt {
@@ -836,7 +843,7 @@ body::after {
 /* ===== ARTIFACTS ===== */
 .artifacts-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 }
 
@@ -897,6 +904,7 @@ body::after {
     object-fit: cover;
     display: block;
     transition: transform 0.4s;
+    will-change: transform;
 }
 
 .restoration-item:hover .restoration-photo {
@@ -926,6 +934,85 @@ body::after {
     text-transform: uppercase;
 }
 
+/* ===== GALLERY ===== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.gallery-item--featured {
+    grid-column: span 4;
+    grid-row: span 1;
+}
+
+.gallery-item:hover {
+    border-color: rgba(200, 169, 106, 0.45);
+    box-shadow: var(--glow);
+}
+
+.gallery-photo {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+    will-change: transform;
+}
+
+.gallery-item--featured .gallery-photo {
+    height: 340px;
+    min-height: 0;
+}
+
+.gallery-item:hover .gallery-photo {
+    transform: scale(1.05);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(11, 15, 26, 0.88) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 1rem 1.2rem;
+    gap: 0.2rem;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-num {
+    color: var(--accent);
+    font-family: var(--font-main);
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+    opacity: 0.75;
+}
+
+.gallery-caption {
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
 /* ===== LIGHTBOX ===== */
 .lightbox {
     display: none;
@@ -945,7 +1032,7 @@ body::after {
 
 .lightbox img {
     max-width: 90vw;
-    max-height: 78vh;
+    max-height: 89vh;
     object-fit: contain;
     border: 1px solid var(--border);
     border-radius: 4px;
@@ -986,6 +1073,34 @@ body::after {
     border-color: var(--accent);
 }
 
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--accent);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, border-color 0.3s, opacity 0.3s;
+    z-index: 1;
+}
+
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(200, 169, 106, 0.15);
+    border-color: var(--accent);
+}
+
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg2); }
@@ -1015,6 +1130,9 @@ body::after {
 
     .artifacts-grid { grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
     .restoration-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item--featured { grid-column: span 2; grid-row: span 1; }
+    .gallery-item--featured .gallery-photo { height: 260px; min-height: 0; }
     .diploma-card { flex-wrap: wrap; }
     .btn-download { width: 100%; justify-content: center; }
 }
@@ -1064,6 +1182,10 @@ body::after {
     .artifacts-grid { grid-template-columns: repeat(2, 1fr); }
     .restoration-grid { grid-template-columns: 1fr; }
     .restoration-photo { height: 220px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    .gallery-item--featured { grid-column: span 2; grid-row: span 1; }
+    .gallery-item--featured .gallery-photo { height: 220px; min-height: 0; }
+    .gallery-photo { height: 180px; }
 
     .telegram-btn { width: 50px; height: 50px; bottom: 1.2rem; right: 1.2rem; }
     .telegram-btn svg { width: 22px; height: 22px; }

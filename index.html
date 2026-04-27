@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
@@ -16,15 +16,21 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Корінчук Олександр — Науковий співробітник">
     <meta property="og:description" content="Старший науковий співробітник Херсонського обласного краєзнавчого музею. Реставрація металів, архівна справа, історія краю.">
-    <meta property="og:image" content="assets/images/avatar.jpg">
+    <meta property="og:image" content="assets/images/avatar.webp">
     <meta property="og:locale" content="uk_UA">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg">
     <link rel="manifest" href="manifest.json">
 
+    <!-- Performance: preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="assets/images/avatar.webp" as="image">
+
     <link rel="stylesheet" href="styles/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
 
@@ -42,6 +48,7 @@
             <li><a href="#skills">Навички</a></li>
             <li><a href="#artifacts">Роботи</a></li>
             <li><a href="#restoration">Реставрація</a></li>
+            <li><a href="#gallery">Галерея</a></li>
             <li><a href="#contact">Контакти</a></li>
         </ul>
         <div class="nav-toggle" id="navToggle">
@@ -54,7 +61,7 @@
         <div class="hero-content">
             <div class="hero-avatar-wrapper">
                 <div class="avatar-ring"></div>
-                <img src="assets/images/avatar.jpg" alt="Корінчук Олександр" class="hero-avatar">
+                <img src="assets/images/avatar.webp" alt="Корінчук Олександр" class="hero-avatar" fetchpriority="high">
             </div>
             <div class="hero-text">
                 <p class="hero-label">// науковий співробітник</p>
@@ -65,6 +72,7 @@
                     <span class="tag">Архівіст</span>
                     <span class="tag">Реставратор</span>
                     <span class="tag">Документознавець</span>
+                    <span class="tag">Археолог</span>
                 </div>
                 <div class="hero-buttons">
                     <a href="#about" class="btn-primary">Дізнатись більше</a>
@@ -260,46 +268,32 @@
             <h2 class="section-title">// Роботи_та_Артефакти</h2>
             <p class="section-intro">Фотографії артефактів з музейних фондів та наукових досліджень. Натисніть на фото для перегляду.</p>
             <div class="artifacts-grid">
+               
                 <div class="artifact-item">
-                    <img src="assets/artifacts/artifact_1.jpg" alt="Артефакт 1 (текст, замінити)" class="artifact-photo">
-                    <p class="artifact-caption">Артефакт 1 (текст, замінити)</p>
+                    <img src="assets/artifacts/artifact_2.webp" alt="Реставрація статуетки підсвідчника бронзової 18-19 століття перші три фото до реставрації. Процес реставрації механічна очистака від слідів корозії та забруднення. стабілізація поверхні та укріплення поверхі та консервації статуетки." class="artifact-photo" loading="lazy" decoding="async">
+                    <p class="artifact-caption">Реставрація статуетки підсвідчника бронзової 18-19 століття</p>
                 </div>
                 <div class="artifact-item">
-                    <img src="assets/artifacts/artifact_2.jpg" alt="Артефакт 2 (текст, замінити)" class="artifact-photo">
-                    <p class="artifact-caption">Артефакт 2 (текст, замінити)</p>
+                    <img src="assets/artifacts/artifact_3.webp" alt="Реставрація статуетки підсвідчника бронзової 18-19 століття перші три фото до реставрації. Процес реставрації механічна очистака від слідів корозії та забруднення. стабілізація поверхні та укріплення поверхі та консервації статуетки." class="artifact-photo" loading="lazy" decoding="async">
+                    <p class="artifact-caption">Реставрація статуетки підсвідчника бронзової 18-19 століття</p>
                 </div>
                 <div class="artifact-item">
-                    <img src="assets/artifacts/artifact_3.jpg" alt="Артефакт 3 (текст, замінити)" class="artifact-photo">
-                    <p class="artifact-caption">Артефакт 3 (текст, замінити)</p>
+                    <img src="assets/artifacts/artifact_1.webp" alt="Після реставрації статуетки підсвідчника бронзової 18-19 століття" class="artifact-photo" loading="lazy" decoding="async">
+                    <p class="artifact-caption">Після реставрації статуетки підсвідчника бронзової 18-19 століття</p>
                 </div>
                 <div class="artifact-item">
-                    <img src="assets/artifacts/artifact_4.jpg" alt="Артефакт 4 (текст, замінити)" class="artifact-photo">
-                    <p class="artifact-caption">Артефакт 4 (текст, замінити)</p>
+                    <img src="assets/artifacts/artifact_9.webp" alt="До реставрації Акінак з антеноподібним навершям та метелекоподібним перехрестям, волюти прилягають до основи рукояті меча. Рукоять мала виступаючі бортики по краях. Перехрестя виконано з двох частин, наварне. Лезо коротке, широке, двосічне, має паралельні леза, що сходяться до вістря в останній третині довжини." class="artifact-photo" loading="lazy" decoding="async">
+                    <p class="artifact-caption">До реставрації Акінак з антеноподібним навершям та метелекоподібним перехрестям.</p>
                 </div>
                 <div class="artifact-item">
-                    <img src="assets/artifacts/artifact_5.jpg" alt="Артефакт 5 (текст, замінити)" class="artifact-photo">
-                    <p class="artifact-caption">Артефакт 5 (текст, замінити)</p>
+                    <img src="assets/artifacts/artifact_10.webp" alt="До реставрації Акінак з антеноподібним навершям та метелекоподібним перехрестям, волюти прилягають до основи рукояті меча. Рукоять мала виступаючі бортики по краях. Перехрестя виконано з двох частин, наварне. Лезо коротке, широке, двосічне, має паралельні леза, що сходяться до вістря в останній третині довжини." class="artifact-photo" loading="lazy" decoding="async">
+                    <p class="artifact-caption">До реставрації Акінак з антеноподібним навершям та метелекоподібним перехрестям.</p>
                 </div>
                 <div class="artifact-item">
-                    <img src="assets/artifacts/artifact_6.jpg" alt="Артефакт 6 (текст, замінити)" class="artifact-photo">
-                    <p class="artifact-caption">Артефакт 6 (текст, замінити)</p>
+                    <img src="assets/artifacts/artifact_7.webp" alt="Після реставрації Акінак з антеноподібним навершям та метелекоподібним перехрестям, волюти прилягають до основи рукояті меча. Рукоять мала виступаючі бортики по краях. Перехрестя виконано з двох частин, наварне. Лезо коротке, широке, двосічне, має паралельні леза, що сходяться до вістря в останній третині довжини." class="artifact-photo" loading="lazy" decoding="async">
+                    <p class="artifact-caption">Після реставрації Акінак з антеноподібним навершям та метелекоподібним перехрестям</p>
                 </div>
-                <div class="artifact-item">
-                    <img src="assets/artifacts/artifact_7.jpg" alt="Артефакт 7 (текст, замінити)" class="artifact-photo">
-                    <p class="artifact-caption">Артефакт 7 (текст, замінити)</p>
-                </div>
-                <div class="artifact-item">
-                    <img src="assets/artifacts/artifact_8.jpg" alt="Артефакт 8 (текст, замінити)" class="artifact-photo">
-                    <p class="artifact-caption">Артефакт 8 (текст, замінити)</p>
-                </div>
-                <div class="artifact-item">
-                    <img src="assets/artifacts/artifact_9.jpg" alt="Артефакт 9 (текст, замінити)" class="artifact-photo">
-                    <p class="artifact-caption">Артефакт 9 (текст, замінити)</p>
-                </div>
-                <div class="artifact-item">
-                    <img src="assets/artifacts/artifact_10.jpg" alt="Артефакт 10 (текст, замінити)" class="artifact-photo">
-                    <p class="artifact-caption">Артефакт 10 (текст, замінити)</p>
-                </div>
+             
             </div>
         </div>
     </section>
@@ -311,23 +305,168 @@
             <p class="section-intro">Процес реставрації та консервації артефактів із металу і мідних сплавів</p>
             <div class="restoration-grid">
                 <div class="restoration-item">
-                    <img src="assets/restoration/restoration_1.jpg" alt="Процес реставрації артефакту" class="restoration-photo">
+                    <img src="assets/restoration/restoration_1.webp" alt="Процес реставрації артефакту" class="restoration-photo" loading="lazy" decoding="async">
                     <div class="restoration-overlay">
                         <span>Реставрація</span>
                     </div>
                 </div>
                 <div class="restoration-item">
-                    <img src="assets/restoration/restoration_2.jpg" alt="Консервація металевих виробів" class="restoration-photo">
+                    <img src="assets/restoration/restoration_4.webp" alt="Консервація металевих виробів" class="restoration-photo" loading="lazy" decoding="async">
                     <div class="restoration-overlay">
                         <span>Консервація</span>
                     </div>
                 </div>
                 <div class="restoration-item">
-                    <img src="assets/restoration/restoration_3.jpg" alt="Дослідження артефактів" class="restoration-photo">
+                    <img src="assets/restoration/restoration_3.webp" alt="Дослідження артефактів" class="restoration-photo" loading="lazy" decoding="async">
                     <div class="restoration-overlay">
                         <span>Дослідження</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ГАЛЕРЕЯ ПРОЄКТІВ -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title">// Галерея_Проєктів</h2>
+            <p class="section-intro">Музейні виставки та проєкти Херсонського обласного краєзнавчого музею. Натисніть на фото для перегляду.</p>
+            <div class="gallery-grid">
+
+                <div class="gallery-item gallery-item--featured">
+                    <img src="assets/gallery/poster.webp" alt="Афіша виставки" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Афіша виставки</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-01.webp" alt="Гошкевич" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">01</span>
+                        <span class="gallery-caption">Гошкевич</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-02.webp" alt="Пачосський" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">02</span>
+                        <span class="gallery-caption">Пачосський</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-03.webp" alt="Кам'яна доба" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">03</span>
+                        <span class="gallery-caption">Кам'яна доба</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-04.webp" alt="Кіммерійці та скіфи" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">04</span>
+                        <span class="gallery-caption">Кіммерійці та скіфи</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-05.webp" alt="Античний світ Херсонщини" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">05</span>
+                        <span class="gallery-caption">Античний світ Херсонщини</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-06.webp" alt="Пізні скіфи та сармати" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">06</span>
+                        <span class="gallery-caption">Пізні скіфи та сармати</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-07.webp" alt="Доба великого переселення народів" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">07</span>
+                        <span class="gallery-caption">Доба великого переселення народів</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-08.webp" alt="Доба середньовіччя" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">08</span>
+                        <span class="gallery-caption">Доба середньовіччя</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-10.webp" alt="Понад Дніпром козацьким" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">10</span>
+                        <span class="gallery-caption">Понад Дніпром козацьким</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-11.webp" alt="Державотворення" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">11</span>
+                        <span class="gallery-caption">Державотворення</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-12.webp" alt="Шлях спротиву" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">12</span>
+                        <span class="gallery-caption">Шлях спротиву</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-13.webp" alt="Пограбована спадщина" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">13</span>
+                        <span class="gallery-caption">Пограбована спадщина</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-14.webp" alt="Деокупація" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">14</span>
+                        <span class="gallery-caption">Деокупація</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-15.webp" alt="Евакуація" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">15</span>
+                        <span class="gallery-caption">Евакуація</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/gallery-16.webp" alt="Музей у часи випробувань" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-num">16</span>
+                        <span class="gallery-caption">Музей у часи випробувань</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets/gallery/FB_IMG_1774352292082.webp" alt="Хроніка музею" class="gallery-photo" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Хроніка музею</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -376,7 +515,13 @@
     <!-- LIGHTBOX -->
     <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Перегляд зображення">
         <button class="lightbox-close" aria-label="Закрити">&times;</button>
+        <button class="lightbox-prev" aria-label="Попереднє">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
         <img src="" id="lightbox-img" alt="">
+        <button class="lightbox-next" aria-label="Наступне">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
         <p class="lightbox-caption" id="lightbox-caption"></p>
     </div>
 
@@ -392,6 +537,6 @@
         <p class="footer-sub">Херсонський обласний краєзнавчий музей</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
