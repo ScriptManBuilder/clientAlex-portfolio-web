@@ -344,6 +344,14 @@ body::after {
     contain-intrinsic-size: 0 600px;
 }
 
+/* Keep media-heavy sections fully paintable to avoid lazy-load paint glitches. */
+#artifacts,
+#restoration,
+#gallery {
+    content-visibility: visible;
+    contain-intrinsic-size: auto;
+}
+
 /* Hero is above-fold — no content-visibility */
 .hero-section {
     content-visibility: visible;
@@ -861,8 +869,12 @@ body::after {
     border-radius: 4px;
     display: block;
     cursor: pointer;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    opacity: 0;
+    background: linear-gradient(135deg, rgba(200, 169, 106, 0.08), rgba(46, 58, 90, 0.14));
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.25s ease;
 }
+
+.artifact-photo.is-loaded { opacity: 1; }
 
 .artifact-photo:hover {
     transform: scale(1.04);
@@ -903,9 +915,13 @@ body::after {
     height: 280px;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s;
+    opacity: 0;
+    background: linear-gradient(135deg, rgba(200, 169, 106, 0.08), rgba(46, 58, 90, 0.14));
+    transition: transform 0.4s, opacity 0.25s ease;
     will-change: transform;
 }
+
+.restoration-photo.is-loaded { opacity: 1; }
 
 .restoration-item:hover .restoration-photo {
     transform: scale(1.04);
@@ -965,8 +981,19 @@ body::after {
     height: 210px;
     object-fit: cover;
     display: block;
-    transition: transform 0.45s ease;
+    opacity: 0;
+    background: linear-gradient(135deg, rgba(200, 169, 106, 0.08), rgba(46, 58, 90, 0.14));
+    transition: transform 0.45s ease, opacity 0.25s ease;
     will-change: transform;
+}
+
+.gallery-photo.is-loaded { opacity: 1; }
+
+.artifact-photo.is-error,
+.restoration-photo.is-error,
+.gallery-photo.is-error {
+    opacity: 0.45;
+    filter: saturate(0.6);
 }
 
 .gallery-item--featured .gallery-photo {

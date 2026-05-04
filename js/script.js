@@ -1,6 +1,8 @@
 // ===== PARTICLE CANVAS BACKGROUND =====
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const lowPowerMode = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -19,7 +21,7 @@ window.addEventListener('mousemove', (e) => {
 
 // --- Particles ---
 const particles = [];
-const PARTICLE_COUNT = 90;
+const PARTICLE_COUNT = reducedMotion ? 0 : (lowPowerMode ? 55 : 90);
 
 for (let i = 0; i < PARTICLE_COUNT; i++) {
     particles.push({
@@ -34,7 +36,7 @@ for (let i = 0; i < PARTICLE_COUNT; i++) {
 
 // --- Floating crypto shapes ---
 const shapes = [];
-const SHAPE_COUNT = 18;
+const SHAPE_COUNT = reducedMotion ? 0 : (lowPowerMode ? 10 : 18);
 const shapeTypes = ['hex', 'diamond', 'ring', 'triangle'];
 
 for (let i = 0; i < SHAPE_COUNT; i++) {
@@ -53,7 +55,7 @@ for (let i = 0; i < SHAPE_COUNT; i++) {
 
 // --- Ambient floating orbs ---
 const orbs = [];
-const ORB_COUNT = 5;
+const ORB_COUNT = reducedMotion ? 0 : (lowPowerMode ? 3 : 5);
 for (let i = 0; i < ORB_COUNT; i++) {
     orbs.push({
         x: Math.random() * canvas.width,
@@ -110,8 +112,26 @@ function drawRing(x, y, size) {
 }
 
 let time = 0;
+let isPageVisible = true;
+let lastFrameTime = 0;
+const targetFrameMs = lowPowerMode ? 40 : 30;
 
-function drawParticles() {
+document.addEventListener('visibilitychange', () => {
+    isPageVisible = !document.hidden;
+});
+
+function drawParticles(now = 0) {
+    if (!isPageVisible) {
+        requestAnimationFrame(drawParticles);
+        return;
+    }
+
+    if (now - lastFrameTime < targetFrameMs) {
+        requestAnimationFrame(drawParticles);
+        return;
+    }
+
+    lastFrameTime = now;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     time += 0.005;
 
@@ -331,6 +351,86 @@ window.addEventListener('scroll', () => {
             : 'var(--text-muted)';
     });
 });
+
+// ===== IMAGE LOADING STABILITY =====
+const mediaImages = Array.from(document.querySelectorAll('.artifact-photo, .restoration-photo, .gallery-photo'));
+
+function markImageLoaded(img) {
+    img.classList.remove('is-error');
+    img.classList.add('is-loaded');
+}
+
+function markImageError(img) {
+    img.classList.add('is-error');
+}
+
+function buildRetryUrl(src, attempt) {
+    const url = new URL(src, window.location.href);
+    url.searchParams.set('img-retry', String(attempt));
+    return url.toString();
+}
+
+function retryImageLoad(img) {
+    const currentAttempt = Number(img.dataset.retryAttempt || '0');
+    if (currentAttempt >= 2) {
+        markImageError(img);
+        return;
+    }
+
+    const nextAttempt = currentAttempt + 1;
+    const source = img.currentSrc || img.getAttribute('src');
+    if (!source) {
+        markImageError(img);
+        return;
+    }
+
+    img.dataset.retryAttempt = String(nextAttempt);
+    img.src = buildRetryUrl(source, nextAttempt);
+}
+
+const galleryImages = mediaImages.filter(img => img.classList.contains('gallery-photo'));
+
+mediaImages.forEach((img) => {
+    const galleryIndex = galleryImages.indexOf(img);
+    if (galleryIndex > -1 && galleryIndex < 6) {
+        img.loading = 'eager';
+        img.fetchPriority = 'high';
+    }
+
+    img.addEventListener('load', () => {
+        if (img.naturalWidth > 0) {
+            markImageLoaded(img);
+        } else {
+            retryImageLoad(img);
+        }
+    });
+
+    img.addEventListener('error', () => {
+        retryImageLoad(img);
+    });
+
+    if (img.complete) {
+        if (img.naturalWidth > 0) {
+            markImageLoaded(img);
+        } else {
+            retryImageLoad(img);
+        }
+    }
+});
+
+if ('IntersectionObserver' in window) {
+    const preloadObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const img = entry.target;
+            const prefetch = new Image();
+            prefetch.src = img.currentSrc || img.src;
+            observer.unobserve(img);
+        });
+    }, { rootMargin: '700px 0px' });
+
+    mediaImages.forEach(img => preloadObserver.observe(img));
+}
 
 // ===== LIGHTBOX =====
 const lightbox = document.getElementById('lightbox');
