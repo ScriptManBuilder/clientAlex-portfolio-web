@@ -862,7 +862,7 @@ body::after {
 /* ===== FOOTER ===== */
 .footer {
     text-align: center;
-    padding: 2.5rem 2rem;
+    padding: 2rem 1.2rem;
     border-top: 1px solid var(--border);
     color: var(--text-muted);
     font-size: 0.85rem;
@@ -882,7 +882,57 @@ body::after {
     background: linear-gradient(to right, transparent, rgba(200, 169, 106, 0.2), transparent);
 }
 
-.footer-sub { margin-top: 0.3rem; opacity: 0.6; }
+.footer-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.footer-main {
+    color: var(--text);
+    font-size: 0.82rem;
+    letter-spacing: 1.2px;
+}
+
+.footer-credit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--accent);
+    border: 1px solid rgba(200, 169, 106, 0.28);
+    border-radius: 999px;
+    padding: 0.24rem 0.72rem;
+    font-size: 0.68rem;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    background: rgba(200, 169, 106, 0.05);
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.footer-credit-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px rgba(200, 169, 106, 0.45);
+}
+
+.footer-credit:hover {
+    transform: translateY(-1px);
+    border-color: rgba(200, 169, 106, 0.55);
+    background: rgba(200, 169, 106, 0.1);
+    box-shadow: 0 0 16px rgba(200, 169, 106, 0.15);
+}
+
+.footer-sub {
+    margin-top: 0.1rem;
+    opacity: 0.65;
+    font-size: 0.75rem;
+}
 
 /* ===== SECTION INTRO ===== */
 .section-intro {
@@ -1392,6 +1442,8 @@ body::after {
     .section-title { font-size: 0.9rem; letter-spacing: 1px; }
 
     .footer { font-size: 0.75rem; padding: 1.5rem 1rem; }
+    .footer-main { font-size: 0.75rem; letter-spacing: 0.7px; }
+    .footer-credit { font-size: 0.62rem; letter-spacing: 1px; padding: 0.22rem 0.62rem; }
     .telegram-btn { width: 46px; height: 46px; bottom: 1rem; right: 1rem; }
     .telegram-btn svg { width: 20px; height: 20px; }
 }
