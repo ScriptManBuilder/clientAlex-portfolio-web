@@ -525,6 +525,46 @@
                     <div class="contact-block-hint">Старший науковий співробітник</div>
                 </div>
             </div>
+
+            <div class="contact-form-wrap glass-card">
+                <p class="contact-form-eyebrow">// Зворотний_зв'язок</p>
+                <h3 class="contact-form-title">Напишіть повідомлення</h3>
+                <p class="contact-form-subtitle">Заповніть форму нижче, щоб швидко зв'язатися щодо співпраці, консультацій або музейних проєктів.</p>
+
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="contact-form-grid">
+                        <label class="form-field">
+                            <span>Ім'я</span>
+                            <input type="text" name="name" autocomplete="name" placeholder="Ваше ім'я" required>
+                        </label>
+
+                        <label class="form-field">
+                            <span>Email</span>
+                            <input type="email" name="email" autocomplete="email" placeholder="name@example.com" required>
+                        </label>
+
+                        <label class="form-field">
+                            <span>Телефон</span>
+                            <input type="tel" name="phone" autocomplete="tel" placeholder="+38 0XX XXX XX XX">
+                        </label>
+
+                        <label class="form-field">
+                            <span>Тема</span>
+                            <input type="text" name="subject" placeholder="Тема звернення" required>
+                        </label>
+                    </div>
+
+                    <label class="form-field form-field-full">
+                        <span>Повідомлення</span>
+                        <textarea name="message" rows="5" placeholder="Коротко опишіть ваше звернення" required></textarea>
+                    </label>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary form-submit">Надіслати</button>
+                        <p id="contactFormStatus" class="form-status" role="status" aria-live="polite"></p>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -553,6 +593,7 @@
         <p class="footer-sub">Херсонський обласний краєзнавчий музей</p>
     </footer>
 
+    <script src="js/env.js" defer></script>
     <script src="js/script.js" defer></script>
 </body>
 </html>

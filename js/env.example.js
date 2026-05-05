@@ -1,0 +1,4 @@
+window.TELEGRAM_CONFIG = {
+    botToken: "PUT_YOUR_TELEGRAM_BOT_TOKEN_HERE",
+    chatId: "PUT_YOUR_TELEGRAM_CHAT_ID_HERE",
+};

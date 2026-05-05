@@ -716,6 +716,124 @@ body::after {
     opacity: 1;
 }
 
+.contact-form-wrap {
+    margin: 2rem auto 0;
+    max-width: 900px;
+    padding: 2.2rem;
+}
+
+.contact-form-eyebrow {
+    color: var(--accent);
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.45rem;
+}
+
+.contact-form-title {
+    font-family: var(--font-main);
+    color: var(--text);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+}
+
+.contact-form-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.4rem;
+    max-width: 720px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.form-field span {
+    color: var(--text-muted);
+    font-family: var(--font-main);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.form-field input,
+.form-field textarea {
+    background: rgba(11, 15, 26, 0.65);
+    border: 1px solid rgba(200, 169, 106, 0.22);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    padding: 0.75rem 0.9rem;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: rgba(122, 126, 148, 0.8);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    border-color: rgba(200, 169, 106, 0.55);
+    box-shadow: 0 0 0 3px rgba(200, 169, 106, 0.1);
+    background: rgba(11, 15, 26, 0.8);
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-field-full {
+    grid-column: 1 / -1;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.form-submit {
+    border: none;
+    cursor: pointer;
+}
+
+.form-status {
+    min-height: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.form-status.is-success {
+    color: #8ad7a7;
+}
+
+.form-status.is-error {
+    color: #f0a099;
+}
+
 /* ===== TELEGRAM BUTTON ===== */
 .telegram-btn {
     position: fixed;
@@ -1162,6 +1280,8 @@ body::after {
     .gallery-item--featured .gallery-photo { height: 260px; min-height: 0; }
     .diploma-card { flex-wrap: wrap; }
     .btn-download { width: 100%; justify-content: center; }
+
+    .contact-form-grid { grid-template-columns: 1fr; }
 }
 
 /* --- Mobile L: 425px --- */
@@ -1205,6 +1325,11 @@ body::after {
     .contact-grid { grid-template-columns: 1fr; max-width: 100%; }
     .contact-block { padding: 1.8rem 1.2rem; }
     .contact-block-hint { opacity: 1; }
+    .contact-form-wrap { padding: 1.5rem 1.1rem; }
+    .contact-form-title { font-size: 0.95rem; letter-spacing: 1px; }
+    .contact-form-subtitle { font-size: 0.85rem; margin-bottom: 1rem; }
+    .form-actions { align-items: flex-start; }
+    .form-submit { width: 100%; text-align: center; }
 
     .artifacts-grid { grid-template-columns: repeat(2, 1fr); }
     .restoration-grid { grid-template-columns: 1fr; }

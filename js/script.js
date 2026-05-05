@@ -490,3 +490,96 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') showPrev();
     if (e.key === 'ArrowRight') showNext();
 });
+
+// ===== CONTACT FORM =====
+const contactForm = document.getElementById('contactForm');
+const contactFormStatus = document.getElementById('contactFormStatus');
+
+if (contactForm && contactFormStatus) {
+    const submitButton = contactForm.querySelector('.form-submit');
+
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(contactForm);
+        const name = String(formData.get('name') || '').trim();
+        const email = String(formData.get('email') || '').trim();
+        const phone = String(formData.get('phone') || '').trim();
+        const subject = String(formData.get('subject') || '').trim();
+        const message = String(formData.get('message') || '').trim();
+
+        contactFormStatus.classList.remove('is-success', 'is-error');
+
+        if (!name || !email || !subject || !message) {
+            contactFormStatus.textContent = 'Будь ласка, заповніть усі обов\'язкові поля.';
+            contactFormStatus.classList.add('is-error');
+            return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            contactFormStatus.textContent = 'Вкажіть коректну адресу email.';
+            contactFormStatus.classList.add('is-error');
+            return;
+        }
+
+        const telegramConfig = window.TELEGRAM_CONFIG || {};
+        const botToken = String(telegramConfig.botToken || '').trim();
+        const chatId = String(telegramConfig.chatId || '').trim();
+
+        if (!botToken || !chatId) {
+            contactFormStatus.textContent = 'Не налаштовано Telegram Bot. Перевірте js/env.js';
+            contactFormStatus.classList.add('is-error');
+            return;
+        }
+
+        const telegramMessage = [
+            'Нове повідомлення з сайту:',
+            `Ім\'я: ${name}`,
+            `Email: ${email}`,
+            `Телефон: ${phone || 'не вказано'}`,
+            `Тема: ${subject}`,
+            '',
+            message,
+        ].join('\n');
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Відправляю...';
+        }
+
+        try {
+            const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: telegramMessage,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Telegram request failed');
+            }
+
+            const result = await response.json();
+            if (!result.ok) {
+                throw new Error('Telegram API returned not ok');
+            }
+
+            contactFormStatus.textContent = 'Повідомлення успішно надіслано в Telegram.';
+            contactFormStatus.classList.add('is-success');
+            contactForm.reset();
+        } catch (error) {
+            contactFormStatus.textContent = 'Не вдалося відправити в Telegram. Спробуйте ще раз.';
+            contactFormStatus.classList.add('is-error');
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Надіслати';
+            }
+        }
+    });
+}
