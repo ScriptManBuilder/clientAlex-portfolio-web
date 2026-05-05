@@ -523,50 +523,28 @@ if (contactForm && contactFormStatus) {
             return;
         }
 
-        const telegramConfig = window.TELEGRAM_CONFIG || {};
-        const botToken = String(telegramConfig.botToken || '').trim();
-        const chatId = String(telegramConfig.chatId || '').trim();
-
-        if (!botToken || !chatId) {
-            contactFormStatus.textContent = 'Не налаштовано Telegram Bot. Перевірте js/env.js';
-            contactFormStatus.classList.add('is-error');
-            return;
-        }
-
-        const telegramMessage = [
-            'Нове повідомлення з сайту:',
-            `Ім\'я: ${name}`,
-            `Email: ${email}`,
-            `Телефон: ${phone || 'не вказано'}`,
-            `Тема: ${subject}`,
-            '',
-            message,
-        ].join('\n');
-
         if (submitButton) {
             submitButton.disabled = true;
             submitButton.textContent = 'Відправляю...';
         }
 
         try {
-            const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            const response = await fetch('/api/send-telegram', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    chat_id: chatId,
-                    text: telegramMessage,
+                    name,
+                    email,
+                    phone,
+                    subject,
+                    message,
                 }),
             });
 
             if (!response.ok) {
-                throw new Error('Telegram request failed');
-            }
-
-            const result = await response.json();
-            if (!result.ok) {
-                throw new Error('Telegram API returned not ok');
+                throw new Error('Send API request failed');
             }
 
             contactFormStatus.textContent = 'Повідомлення успішно надіслано в Telegram.';
